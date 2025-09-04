@@ -1,0 +1,291 @@
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>website kelas by agus</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background: black;
+      color: #cce6ff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    h1 {
+      font-size: 28px;
+      text-shadow: 0 0 15px #7b5cff;
+      margin-top: 20px;
+    }
+    .container {
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* BOX */
+    .glow-box {
+      background: rgba(60, 0, 100, 0.3);
+      border: 2px solid #7b5cff;
+      border-radius: 12px;
+      padding: 12px;
+      margin: 10px auto;
+      width: 280px;
+      box-shadow: 0 0 20px #4dc3ff;
+      cursor: pointer;
+      transition: 0.25s;
+      color: #cce6ff;
+    }
+    .glow-box:hover {
+      background: rgba(100, 0, 200, 0.4);
+      transform: scale(1.05);
+    }
+
+    /* GAMBAR */
+    .main-img {
+      width: 200px;
+      height: auto;
+      border-radius: 12px;
+      margin: 10px auto;
+      box-shadow: 0 0 20px #4dc3ff;
+      display: block;
+    }
+    .popup-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      object-fit: cover;
+    }
+    .qris-img {
+      width: 220px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #4dc3ff;
+      margin: 15px auto;
+      display: block;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* BINTANG */
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      opacity: 0.8;
+      animation: twinkle 3s infinite alternate, moveStars linear infinite;
+      z-index: 0;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+    @keyframes moveStars {
+      from { transform: translateY(0px); }
+      to { transform: translateY(100vh); }
+    }
+
+    /* POPUP */
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(15,15,40,0.5);
+      backdrop-filter: blur(4px);
+    }
+    .popup-content {
+      background: rgba(20,0,50,0.9);
+      border: 2px solid #7b5cff;
+      border-radius: 15px;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      margin: 10% auto;
+      color: #cce6ff;
+      box-shadow: 0 0 25px #4dc3ff;
+      position: relative;
+      z-index: 11;
+    }
+    .close-btn {
+      margin-top: 15px;
+      background: #7b5cff;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .close-btn:hover {
+      background: #5b3fd1;
+    }
+
+    /* SPLASH SCREEN */
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #2b0066, #001f66);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      animation: fadeOut 1s ease forwards;
+      animation-delay: 2.5s;
+    }
+    .splash-content {
+      text-align: center;
+      color: #fff;
+      animation: zoomIn 1.5s ease;
+    }
+    .splash-content h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px #6145D8;
+    }
+    .splash-content p {
+      font-size: 20px;
+      color: #aaddff;
+    }
+    @keyframes zoomIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SPLASH SCREEN -->
+  <div id="splash">
+    <div class="splash-content">
+      <h1>Wellcome To class 7.4</h1>
+      <p> website kelas 7.4</p>
+    </div>
+  </div>
+
+  <!-- Partikel bintang -->
+  <div class="stars" id="stars"></div>
+
+  <h1>website kelas by agus</h1>
+  <div class="container">
+    <!-- LOGO UTAMA -->
+    <img src="https://files.catbox.moe/ahq2qj.jpg" alt="agus" class="main-img">
+
+    <!-- QRIS -->
+    <div class="glow-box" onclick="openPopup('popupQris')">jadwal pelajaran [ CLICK ya ]</div>
+
+    <!-- DANA -->
+    <div class="glow-box">
+      DANA: <span id="dana">083857678990</span>
+      <button class="copy-btn" onclick="copyText('083857678990')">Copy</button>
+    </div>
+
+    <p>Atas Nama: <b style="color:#f3f4f6">agus</b></p>
+
+    <!-- Produk -->
+    <div class="glow-box" onclick="openPopup('popupOwner')">bayar kas <br> Rp10.000 buat dana diatas</div>
+    <div class="glow-box" onclick="openPopup('popupPartner')"> gatau <br> Rp</div>
+    <div class="glow-box" onclick="openPopup('popupScript')">gatau <br> Rp</div>
+    <div class="glow-box" onclick="openPopup('popupBypass')">gatau<br> Rp</div>
+  </div>
+
+  <!-- POPUP QRIS -->
+  <div class="popup" id="popupQris">
+    <div class="popup-content">
+      <h2>liat</h2>
+      <img class="qris-img" src="https://files.catbox.moe/q6kfes.jpg" alt="QRIS Code">
+      <p>liat mata pelajaran tuh.</p>
+      <button class="close-btn" onclick="closePopup('popupQris')">Tutup</button>
+    </div>
+  </div>
+
+  <!-- POPUP OWNER -->
+  <div class="popup" id="popupOwner">
+    <div class="popup-content">
+      <h2>FOR SALE ACCOUNT</h2>
+      <img src="https://files.catbox.moe/mz06m8.jpg" alt="Owner Xaaportx" class="popup-img">
+      <h3 style="color:#f3f4f6">Xaaportx</h3>
+      <p style="color:#d1d5db">
+       ALL BENEFIT ACCOUNT <br>
+       SILAHKAN HUBUNGI OWNER LANGSUNG ATAU 
+       JIKA LIMIT HUBUNGI 
+      <br><br><i>" Bantu Bro Buat Bayar SPP ☺️!."</i></p>
+      <button class="close-btn" onclick="closePopup('popupOwner')">Tutup</button>
+    </div>
+  </div>
+
+  <!-- POPUP PARTNER -->
+  <div class="popup" id="popupPartner">
+    <div class="popup-content">
+      <h2>🤝 Partner Xaaportx</h2>
+      <p style="color:#d1d5db">☇ Get All Function <br> ☇ Get All Sc Xaa <br> ☇ Get All Sc No Enc <br> ☇ Get All Tools <br> ☇ Get Tools DDOS <br> ☇ Get Reseller Script Deàcrol <br> ☇ Get All Projects Script <br> ☇ Get Script Hefaistos Hades <br> ☇ Get Script Majestic <br> ☇ Get All Base Telegram And WhatsApp <br> ☇ Get Di Buatin Sc [ 2x ] <br> ☇ Get Sc Deploy Web <br> ☇ Get Tools Depcryt Sc <br> ☇ Get Promote 48 Jam <br> ☇ Get Code HTML Web Bug X7 <br> ☇ Get Script DB Full Fiture <br> ☇ Get Script Jasher <br> ☇ Get Script DDOS <br> ☇ Get Script Obf No Enc <br> ☇ Get Web Payment <br> ☇ Dan Masih Banyak Lagi</p>
+      <button class="close-btn" onclick="closePopup('popupPartner')">Tutup</button>
+    </div>
+  </div>
+
+  <!-- POPUP SCRIPT -->
+  <div class="popup" id="popupScript">
+    <div class="popup-content">
+      <h2>📜 Script Telegram Void Storm</h2>
+      <p style="color:#d1d5db">VOID STROM V19.0 NEW <br> EFECK <br>
+<br>- FORCE 1 MSG INFINITE<br>- FORCE NO CLICK APP<br>- FORCE NEW APP<br>- BLANK UI<br>- DELAY SEDOT KUOTA 1GB<br> - FORCE IOS<br> - FREZE CLICK<br> - INVISIBLE MAKER<br>MINAT? HUBUNGI @XaaLimit_Bot</p>
+      <button class="close-btn" onclick="closePopup('popupScript')">Tutup</button>
+    </div>
+  </div>
+
+  <!-- POPUP BYPASS -->
+  <div class="popup" id="popupBypass">
+    <div class="popup-content">
+      <h2> </h2>
+      <p style="color:#d1d5db">  <br>  <br>
+<br>- FORCE 1 MSG INFINITE<br>- FORCE NO CLICK APP<br>- FORCE NEW APP<br>- BLANK UI<br>- DELAY SEDOT KUOTA 1GB<br> - FORCE IOS<br> - FREZE CLICK<br> - INVISIBLE MAKER<br>MINAT? HUBUNGI </p>
+      <button class="close-btn" onclick="closePopup('popupBypass')">Tutup</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy;  Website kelas 7.4 buatan agus
+  </div>
+
+  <script>
+    // Bintang
+    for (let i = 0; i < 200; i++) {
+      let star = document.createElement("div");
+      star.className = "star";
+      let size = Math.random() * 3 + "px";
+      star.style.width = size;
+      star.style.height = size;
+      star.style.top = Math.random() * window.innerHeight + "px";
+      star.style.left = Math.random() * window.innerWidth + "px";
+      star.style.animationDuration = (Math.random() * 10 + 5) + "s"; // 5–15 detik
+      document.body.appendChild(star);
+    }
+
+    // Copy function
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Nomor " + text + " berhasil dicopy!");
+      });
+    }
+
+    // Popup
+    function openPopup(id) {
+      document.getElementById(id).style.display = "block";
+    }
+    function closePopup(id) {
+      document.getElementById(id).style.display = "none";
+    }
+  </script>
+</body>
+</html>
